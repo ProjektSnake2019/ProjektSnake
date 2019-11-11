@@ -4,29 +4,39 @@ using UnityEngine;
 
 public class SnakeMovement : MonoBehaviour
 {
-    Rigidbody rigidbody;
-    public float speed = 200;
+
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+
+        speed = 20f;
+     
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            rigidbody.AddForce(transform.forward * speed * Time.deltaTime);
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            rigidbody.AddForce(transform.right * speed * Time.deltaTime);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            rigidbody.AddForce(transform.right * speed * Time.deltaTime*-1);
-        }
+
+        transform.position += transform.forward * Time.deltaTime;
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Rotate(Vector3.right * Time.deltaTime*speed);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.Rotate(Vector3.left * Time.deltaTime*speed);
+            }
+             if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(Vector3.up * Time.deltaTime*speed);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(Vector3.down * Time.deltaTime*speed);
+            }
 
     }
 }
