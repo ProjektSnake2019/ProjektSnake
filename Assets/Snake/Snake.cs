@@ -13,19 +13,15 @@ public class Snake : MonoBehaviour
 
     }
 
-    public GameObject getObjectToFollow() 
-    {
-        if (snakeFragments.Count != 0)
-        {
+    public GameObject getObjectToFollow(){
+        if (snakeFragments.Count != 0){
             return snakeFragments.Pop();
         }
-        else
-        {
+        else{
             return null;
         }
     }
-    public void addObjectToFollow(GameObject snakeFragment)
-    {
+    public void addObjectToFollow(GameObject snakeFragment){
         snakeFragments.Push(snakeFragment);
     }
 }

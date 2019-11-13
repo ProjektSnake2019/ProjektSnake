@@ -17,13 +17,22 @@ public class SnakeMovement : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * Time.deltaTime*speed;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Rotate(Vector3.right * Time.deltaTime * rotationSpeed);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Rotate(Vector3.left * Time.deltaTime * rotationSpeed);
+        }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(Vector3.up * Time.deltaTime* rotationSpeed);
+            transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.down * Time.deltaTime* rotationSpeed);
+            transform.Rotate(Vector3.down * Time.deltaTime * rotationSpeed);
         }
     }
 }
