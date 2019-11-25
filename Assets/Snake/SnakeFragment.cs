@@ -42,7 +42,7 @@ public class SnakeFragment : MonoBehaviour
             snake.apples++;
             numberOfApples.text = "Apple: " + snake.apples;
             Destroy(collision.collider.gameObject);
-            Instantiate(snakeFragmentPrefab, transform.parent);
+            Instantiate(snakeFragmentPrefab, transform.parent, true);
         }
     }
 
@@ -52,7 +52,7 @@ public class SnakeFragment : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, gameobjectToFollow.transform.position);
 
-        Debug.Log(distance);
+        //Debug.Log(distance);
         transform.position = Vector3.MoveTowards(transform.position, gameobjectToFollow.transform.position, distance * 2 * Time.deltaTime);
     }
 }
