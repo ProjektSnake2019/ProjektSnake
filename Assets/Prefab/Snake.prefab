@@ -124,10 +124,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5632531450137601514}
   - component: {fileID: 5927433263061729237}
-  - component: {fileID: 7969685915776220056}
   - component: {fileID: 1661552873952544230}
   - component: {fileID: 5982321034488812268}
   - component: {fileID: 7089265745785977609}
+  - component: {fileID: 849781390148762791}
   m_Layer: 0
   m_Name: SnakeHead
   m_TagString: Snake
@@ -162,25 +162,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &7969685915776220056
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8678889867284584441}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 0.95
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1661552873952544230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +208,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   rotationSpeed: 50
+--- !u!65 &849781390148762791
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8678889867284584441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &958245250771441344
 PrefabInstance:
   m_ObjectHideFlags: 0
