@@ -6,22 +6,16 @@ using UnityEngine;
 public class Snake : MonoBehaviour
 {
     public float apples;
-    private Stack<GameObject> snakeFragments = new Stack<GameObject>();
-
+    GameObject snakeFragments;
     void Start()
     {
 
     }
 
     public GameObject getObjectToFollow(){
-        if (snakeFragments.Count != 0){
-            return snakeFragments.Pop();
-        }
-        else{
-            return null;
-        }
+        return snakeFragments;
     }
     public void addObjectToFollow(GameObject snakeFragment){
-        snakeFragments.Push(snakeFragment);
+        snakeFragments = snakeFragment;
     }
 }

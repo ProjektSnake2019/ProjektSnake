@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SnakeMovement : MonoBehaviour
 {
@@ -8,7 +11,7 @@ public class SnakeMovement : MonoBehaviour
     public float targetSpeed;
     private float speed;
     public float rotationSpeed;
-    public float slowdownAngle = 0.4f;
+    public float slowdownAngle =40f;
     void Start()
     {
        
@@ -20,14 +23,7 @@ public class SnakeMovement : MonoBehaviour
 
         moveForward();
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Rotate(Vector3.right * Time.deltaTime * rotationSpeed);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Rotate(Vector3.left * Time.deltaTime * rotationSpeed);
-        }
+
         if (Input.GetKey(KeyCode.D))
         {
             transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
@@ -40,7 +36,17 @@ public class SnakeMovement : MonoBehaviour
     float innerSpeed;
     private void moveForward() 
     {
-        innerSpeed = speed * transform.rotation.x/ slowdownAngle;
+        innerSpeed = targetSpeed * (transform.localRotation.x/ slowdownAngle);
+        if(-0.2f > innerSpeed)
+        {
+            Image Hbar = GameObject.Find("Hbar").GetComponent<Image>();
+            Hbar.fillAmount -= 0.002f;
+            if(Hbar.fillAmount == 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+     
         speed = targetSpeed + innerSpeed;
 
         transform.position += transform.forward * Time.deltaTime * speed;

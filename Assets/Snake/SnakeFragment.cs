@@ -40,9 +40,19 @@ public class SnakeFragment : MonoBehaviour
         {
             Text numberOfApples = GameObject.Find("ApplesNumber").GetComponent<Text>();
             snake.apples++;
-            numberOfApples.text = "Apple: " + snake.apples;
+            numberOfApples.text = snake.apples.ToString();
+
+            Image Hbar = GameObject.Find("Hbar").GetComponent<Image>();
+            Hbar.fillAmount += 0.1f;
+
             Destroy(collision.collider.gameObject);
-            Instantiate(snakeFragmentPrefab, transform.parent, true);
+            if (gameobjectToFollow == null)
+            {
+                gameobjectToFollow = this.gameObject;
+            }
+            Instantiate(snakeFragmentPrefab, 
+                gameobjectToFollow.transform.position- gameobjectToFollow.transform.forward*2, 
+                gameobjectToFollow.transform.rotation);
         }
     }
 
@@ -52,7 +62,6 @@ public class SnakeFragment : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, gameobjectToFollow.transform.position);
 
-        //Debug.Log(distance);
-        transform.position = Vector3.MoveTowards(transform.position, gameobjectToFollow.transform.position, distance * 2 * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, gameobjectToFollow.transform.position, distance * 3 * Time.deltaTime);
     }
 }
