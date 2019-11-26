@@ -5,9 +5,10 @@ using UnityEngine;
 public class SnakeMovement : MonoBehaviour
 {
 
-    public float speed;
+    public float targetSpeed;
+    private float speed;
     public float rotationSpeed;
-    // Start is called before the first frame update
+    public float slowdownAngle = 0.4f;
     void Start()
     {
        
@@ -16,7 +17,8 @@ public class SnakeMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * Time.deltaTime*speed;
+
+        moveForward();
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -34,5 +36,13 @@ public class SnakeMovement : MonoBehaviour
         {
             transform.Rotate(Vector3.down * Time.deltaTime * rotationSpeed);
         }
+    }
+    float innerSpeed;
+    private void moveForward() 
+    {
+        innerSpeed = speed * transform.rotation.x/ slowdownAngle;
+        speed = targetSpeed + innerSpeed;
+
+        transform.position += transform.forward * Time.deltaTime * speed;
     }
 }
