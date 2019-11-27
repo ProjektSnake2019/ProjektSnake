@@ -16,20 +16,25 @@ public class GenerateTerrain : MonoBehaviour
     {
         offsetX = Random.Range(0, 9999f);
         offsetY = Random.Range(0, 9999f);
+       
 
     }
-    void Update()
+    void OnEnable() 
     {
-        Terrain terrain = GetComponent<Terrain>();
-        terrain.terrainData = GenerateTerrains(terrain.terrainData);
-
-        if(!isMeshGenerated)
+        if (!isMeshGenerated)
         {
             NavMeshSurface nm = GameObject.FindObjectOfType<NavMeshSurface>();
             nm.UpdateNavMesh(nm.navMeshData);
 
             isMeshGenerated = true;
         }
+    }
+    void Update()
+    {
+        Terrain terrain = GetComponent<Terrain>();
+        terrain.terrainData = GenerateTerrains(terrain.terrainData);
+
+        
 
         
     }
