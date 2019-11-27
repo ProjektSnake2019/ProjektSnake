@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GenerateTerrain : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GenerateTerrain : MonoBehaviour
     public float scale = 12f;
     public float offsetX = 100f;
     public float offsetY = 100f;
+    public bool isMeshGenerated = false;
     void Start()
     {
         offsetX = Random.Range(0, 9999f);
@@ -20,6 +22,16 @@ public class GenerateTerrain : MonoBehaviour
     {
         Terrain terrain = GetComponent<Terrain>();
         terrain.terrainData = GenerateTerrains(terrain.terrainData);
+
+        if(!isMeshGenerated)
+        {
+            NavMeshSurface nm = GameObject.FindObjectOfType<NavMeshSurface>();
+            nm.UpdateNavMesh(nm.navMeshData);
+
+            isMeshGenerated = true;
+        }
+
+        
     }
     TerrainData GenerateTerrains(TerrainData terrainData)
     {
