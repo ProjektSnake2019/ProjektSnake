@@ -25,10 +25,10 @@ public class GenerateTerrain : MonoBehaviour
 
         if(!isMeshGenerated)
         {
-            NavMeshSurface nm = GameObject.FindObjectOfType<NavMeshSurface>();
-            nm.UpdateNavMesh(nm.navMeshData);
+            //NavMeshSurface nm = GameObject.FindObjectOfType<NavMeshSurface>();
+            //nm.UpdateNavMesh(nm.navMeshData);
 
-            isMeshGenerated = true;
+            //isMeshGenerated = true;
         }
 
         
