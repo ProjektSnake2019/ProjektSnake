@@ -7,10 +7,6 @@ public class Snake : MonoBehaviour
 {
     public float apples;
     GameObject snakeFragments;
-    void Start()
-    {
-
-    }
 
     public GameObject getObjectToFollow(){
         return snakeFragments;
