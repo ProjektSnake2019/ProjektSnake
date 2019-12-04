@@ -390,7 +390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f37150e70f130428756bf8f4f1ba24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trees: 700
+  treesCount: 500
+  roksCount: 500
   tree: {fileID: -927199367670048503, guid: 8f39887032977124c8348320c535e1fc, type: 3}
   roks:
   - {fileID: 100000, guid: f5df519d22979c248a77eadf5651b327, type: 3}
