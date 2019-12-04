@@ -36,6 +36,12 @@ public class SnakeMovement : MonoBehaviour
     float innerSpeed;
     private void moveForward() 
     {
+        
+        if(transform.rotation.z > 0.8 || transform.rotation.z < -0.8)
+        {
+            Debug.Log(transform.rotation.z);
+            transform.rotation = Quaternion.Euler(transform.rotation.x,transform.rotation.y,transform.rotation.z);
+        }
         innerSpeed = targetSpeed * (transform.localRotation.x/ slowdownAngle);
         if(-0.2f > innerSpeed)
         {

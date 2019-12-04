@@ -35,7 +35,6 @@ public class SnakeFragment : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("kolizja");
         if (collision.collider.tag == "Apple")
         {
             Text numberOfApples = GameObject.Find("ApplesNumber").GetComponent<Text>();

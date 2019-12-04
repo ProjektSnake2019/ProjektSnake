@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 1661552873952544230}
   - component: {fileID: 5982321034488812268}
   - component: {fileID: 7089265745785977609}
-  - component: {fileID: 849781390148762791}
   m_Layer: 0
   m_Name: SnakeHead
   m_TagString: Snake
@@ -122,21 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36386b23e5af31c4fac64054b60e354d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  targetSpeed: 0
   rotationSpeed: 50
---- !u!65 &849781390148762791
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8678889867284584441}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  slowdownAngle: 40
 --- !u!1001 &958245250771441344
 PrefabInstance:
   m_ObjectHideFlags: 0
