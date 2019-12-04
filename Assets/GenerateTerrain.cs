@@ -10,7 +10,8 @@ public class GenerateTerrain : MonoBehaviour
     private float scale = 12f;
     private float offsetX = 100f;
     private float offsetY = 100f;
-    public int trees = 700;
+    public int treesCount = 500;
+    public int roksCount = 500;
     private bool isMeshGenerated = false;
     public GameObject tree;
     public GameObject[] roks;
@@ -66,18 +67,26 @@ public class GenerateTerrain : MonoBehaviour
     }
     private void GenerateObstacles(Terrain terrain)
     {
-        float x, y, actualHight;
-        for (int i = 0; i < trees; i++)
+        int x, y;
+        float actualHight;
+        for (int i = 0; i < treesCount; i++)
         {
             x = Random.Range(0, width);
             y = Random.Range(0, height);
-            actualHight = terrain.terrainData.GetHeight((int)x, (int)y);
+            actualHight = terrain.terrainData.GetHeight(x, y);
             if (actualHight > 7.57f)
             {
                 actualPos = new Vector3(x, actualHight, y);
                 Instantiate(tree, actualPos, Quaternion.identity);
             }
-            else
+            else i--;
+        }
+        for (int i = 0; i < roksCount; i++)
+        {
+            x = Random.Range(0, width);
+            y = Random.Range(0, height);
+            actualHight = terrain.terrainData.GetHeight(x,y);
+            if (actualHight <= 7.57f)
             {
                 actualPos = new Vector3(x, 7.57f, y);
                 switch (Random.Range(0, 6))
@@ -102,7 +111,8 @@ public class GenerateTerrain : MonoBehaviour
                         break;
                 }
             }
-
+            else i--;
         }
+        
     }
 }
