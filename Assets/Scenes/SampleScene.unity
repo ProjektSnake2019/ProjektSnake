@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_OverrideArea: 1
-  m_Area: 0
+  m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
 --- !u!1 &558047168
@@ -896,7 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Tracked: {fileID: 1755203406}
-  m_Size: {x: 80, y: 20, z: 80}
+  m_Size: {x: 500, y: 20, z: 500}
 --- !u!4 &1113633438
 Transform:
   m_ObjectHideFlags: 0
