@@ -1,29 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class GenerateTerrain : MonoBehaviour
 {
-    public int width = 256;
-    public int height = 256;
-    public int depth = 16;
-    public float scale = 12f;
-    public float offsetX = 100f;
-    public float offsetY = 100f;
-    public bool isMeshGenerated = false;
+    private int width = 256;
+    private int height = 256;
+    private int depth = 16;
+    private float scale = 12f;
+    private float offsetX = 100f;
+    private float offsetY = 100f;
+    public int trees = 700;
+    private bool isMeshGenerated = false;
+    public GameObject tree;
+    public GameObject[] roks;
+    private Vector3 actualPos;
     void Start()
     {
         offsetX = Random.Range(0, 9999f);
         offsetY = Random.Range(0, 9999f);
-
-    }
-    void Update()
-    {
         Terrain terrain = GetComponent<Terrain>();
         terrain.terrainData = GenerateTerrains(terrain.terrainData);
+        GenerateObstacles(terrain);
+    }
 
-        if(!isMeshGenerated)
+ 
+
+    void Update()
+    {
+
+        if (!isMeshGenerated)
         {
             //NavMeshSurface nm = GameObject.FindObjectOfType<NavMeshSurface>();
             //nm.UpdateNavMesh(nm.navMeshData);
@@ -31,7 +37,7 @@ public class GenerateTerrain : MonoBehaviour
             //isMeshGenerated = true;
         }
 
-        
+
     }
     TerrainData GenerateTerrains(TerrainData terrainData)
     {
@@ -43,20 +49,60 @@ public class GenerateTerrain : MonoBehaviour
     float[,] GenerateHeights()
     {
         float[,] heights = new float[width, height];
-        for(int x = 0; x < width; x++)
+        for (int x = 0; x < width; x++)
         {
-            for(int y = 0; y < height; y++) 
+            for (int y = 0; y < height; y++)
             {
-                heights[x, y] = CalculateHeights(x,y);
+                heights[x, y] = CalculateHeights(x, y);
             }
         }
         return heights;
     }
     float CalculateHeights(int x, int y)
     {
-        float xCoord = (float)x /width * scale + offsetX;
-        float yCoord = (float)y /height * scale + offsetY;
+        float xCoord = (float)x / width * scale + offsetX;
+        float yCoord = (float)y / height * scale + offsetY;
         return Mathf.PerlinNoise(xCoord, yCoord);
     }
+    private void GenerateObstacles(Terrain terrain)
+    {
+        float x, y, actualHight;
+        for (int i = 0; i < trees; i++)
+        {
+            x = Random.Range(0, width);
+            y = Random.Range(0, height);
+            actualHight = terrain.terrainData.GetHeight((int)x, (int)y);
+            if (actualHight > 7.57f)
+            {
+                actualPos = new Vector3(x, actualHight, y);
+                Instantiate(tree, actualPos, Quaternion.identity);
+            }
+            else
+            {
+                actualPos = new Vector3(x, 7.57f, y);
+                switch (Random.Range(0, 6))
+                {
+                    case 0:
+                        Instantiate(roks[0], actualPos, Quaternion.identity);
+                        break;
+                    case 1:
+                        Instantiate(roks[1], actualPos, Quaternion.identity);
+                        break;
+                    case 2:
+                        Instantiate(roks[2], actualPos, Quaternion.identity);
+                        break;
+                    case 3:
+                        Instantiate(roks[3], actualPos, Quaternion.identity);
+                        break;
+                    case 4:
+                        Instantiate(roks[4], actualPos, Quaternion.identity);
+                        break;
+                    case 5:
+                        Instantiate(roks[5], actualPos, Quaternion.identity);
+                        break;
+                }
+            }
 
+        }
+    }
 }
