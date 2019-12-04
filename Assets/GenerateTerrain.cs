@@ -12,7 +12,6 @@ public class GenerateTerrain : MonoBehaviour
     private float offsetY = 100f;
     public int treesCount = 500;
     public int roksCount = 500;
-    private bool isMeshGenerated = false;
     public GameObject tree;
     public GameObject[] roks;
     private Vector3 actualPos;
@@ -30,13 +29,7 @@ public class GenerateTerrain : MonoBehaviour
     void Update()
     {
 
-        if (!isMeshGenerated)
-        {
-            //NavMeshSurface nm = GameObject.FindObjectOfType<NavMeshSurface>();
-            //nm.UpdateNavMesh(nm.navMeshData);
 
-            //isMeshGenerated = true;
-        }
 
 
     }
